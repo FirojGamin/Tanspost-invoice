@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Creating Icons...</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+            margin: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .icon-creator {
+            text-align: center;
+            max-width: 600px;
+            padding: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+        canvas { 
+            border: 2px solid rgba(255,255,255,0.3); 
+            margin: 20px; 
+            border-radius: 10px;
+        }
+        .truck-icon {
+            font-size: 100px;
+            color: #f39c12;
+            margin: 20px;
+        }
+        button {
+            padding: 15px 30px;
+            margin: 10px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+        button:hover { background: #2980b9; }
+    </style>
+</head>
+<body>
+    <div class="icon-creator">
+        <h1>🚛 Transport Invoice Icons</h1>
+        <p>Creating professional app icons for your transport billing system</p>
+        
+        <div class="truck-icon">🚛</div>
+        
+        <canvas id="icon192" width="192" height="192"></canvas>
+        <canvas id="icon512" width="512" height="512"></canvas>
+        
+        <button onclick="createIcons()">Generate App Icons</button>
+        <button onclick="downloadIcons()">Download Icons</button>
+        
+        <p><small>Icons will be automatically saved as PNG files for your PWA</small></p>
+    </div>
+
+    <script>
+        function createIcons() {
+            // Create 192x192 icon
+            const canvas192 = document.getElementById('icon192');
+            const ctx192 = canvas192.getContext('2d');
+            
+            // Background gradient
+            const gradient192 = ctx192.createLinearGradient(0, 0, 192, 192);
+            gradient192.addColorStop(0, '#3498db');
+            gradient192.addColorStop(1, '#2c3e50');
+            ctx192.fillStyle = gradient192;
+            ctx192.fillRect(0, 0, 192, 192);
+            
+            // Add truck emoji/icon
+            ctx192.font = '120px Arial';
+            ctx192.textAlign = 'center';
+            ctx192.textBaseline = 'middle';
+            ctx192.fillStyle = '#f39c12';
+            ctx192.fillText('🚛', 96, 96);
+            
+            // Create 512x512 icon
+            const canvas512 = document.getElementById('icon512');
+            const ctx512 = canvas512.getContext('2d');
+            
+            // Background gradient
+            const gradient512 = ctx512.createLinearGradient(0, 0, 512, 512);
+            gradient512.addColorStop(0, '#3498db');
+            gradient512.addColorStop(1, '#2c3e50');
+            ctx512.fillStyle = gradient512;
+            ctx512.fillRect(0, 0, 512, 512);
+            
+            // Add truck emoji/icon
+            ctx512.font = '320px Arial';
+            ctx512.textAlign = 'center';
+            ctx512.textBaseline = 'middle';
+            ctx512.fillStyle = '#f39c12';
+            ctx512.fillText('🚛', 256, 256);
+            
+            console.log('Icons created successfully!');
+        }
+        
+        function downloadIcons() {
+            // Download 192x192
+            const canvas192 = document.getElementById('icon192');
+            const link192 = document.createElement('a');
+            link192.download = 'icon-192.png';
+            link192.href = canvas192.toDataURL('image/png');
+            document.body.appendChild(link192);
+            link192.click();
+            document.body.removeChild(link192);
+            
+            // Download 512x512
+            setTimeout(() => {
+                const canvas512 = document.getElementById('icon512');
+                const link512 = document.createElement('a');
+                link512.download = 'icon-512.png';
+                link512.href = canvas512.toDataURL('image/png');
+                document.body.appendChild(link512);
+                link512.click();
+                document.body.removeChild(link512);
+            }, 500);
+            
+            alert('Icons downloaded! Please save them in your project root folder.');
+        }
+        
+        // Auto-create icons on load
+        window.onload = function() {
+            setTimeout(createIcons, 1000);
+        };
+    </script>
+</body>
+</html>

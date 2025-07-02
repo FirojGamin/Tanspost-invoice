@@ -1,0 +1,49 @@
+{
+  "name": "Transport Invoice - Professional Billing System",
+  "short_name": "Transport Invoice",
+  "version": "1.0.0",
+  "version_code": 1,
+  "description": "Advanced transportation billing and invoice management system with GPS tracking, route calculation, and PDF generation",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#2c3e50",
+  "theme_color": "#3498db",
+  "orientation": "portrait",
+  "categories": ["business", "productivity"],
+  "lang": "en",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "attached_assets/WhatsApp Image 2025-07-02 at 23.35.01_2b248233_1751479525687.jpg",
+      "sizes": "1024x1024",
+      "type": "image/jpeg",
+      "purpose": "any"
+    }
+  ],
+  "version_name": "1.0",
+  "prefer_related_applications": false,
+  "related_applications": [],
+  "scope": "/",
+  "start_url": "/",
+  "display_override": ["window-controls-overlay", "minimal-ui"],
+  "edge_side_panel": {},
+  "screenshots": [
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "form_factor": "narrow"
+    }
+  ]
+}

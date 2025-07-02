@@ -1,0 +1,36 @@
+
+{
+  "name": "transport-invoice",
+  "version": "1.0.0",
+  "description": "Professional transportation billing system with GPS tracking and PDF invoices",
+  "main": "index.html",
+  "scripts": {
+    "build": "node build-android.js",
+    "serve": "python3 -m http.server 8000",
+    "capacitor:init": "npx @capacitor/cli init",
+    "capacitor:add:android": "npx @capacitor/cli add android",
+    "capacitor:build": "npx @capacitor/cli build android"
+  },
+  "keywords": [
+    "transport",
+    "invoice",
+    "billing",
+    "trucking",
+    "logistics",
+    "gps",
+    "pwa",
+    "android"
+  ],
+  "author": "Transport Invoice Team",
+  "license": "MIT",
+  "dependencies": {
+    "@capacitor/core": "^5.0.0",
+    "@capacitor/cli": "^5.0.0",
+    "@capacitor/android": "^5.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/transport-invoice/app"
+  },
+  "homepage": "https://transport-invoice.replit.app"
+}

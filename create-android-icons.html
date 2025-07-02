@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Android Icon Generator</title>
+</head>
+<body>
+    <h1>Android Icon Generator</h1>
+    <input type="file" id="imageInput" accept="image/*">
+    <button onclick="generateIcons()">Generate Android Icons</button>
+    
+    <div id="output"></div>
+    
+    <script>
+        function generateIcons() {
+            const input = document.getElementById('imageInput');
+            const file = input.files[0];
+            if (!file) return;
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = new Image();
+                img.onload = function() {
+                    const sizes = [
+                        { name: 'icon-36.png', size: 36 },
+                        { name: 'icon-48.png', size: 48 },
+                        { name: 'icon-72.png', size: 72 },
+                        { name: 'icon-96.png', size: 96 },
+                        { name: 'icon-144.png', size: 144 },
+                        { name: 'icon-192.png', size: 192 },
+                        { name: 'icon-512.png', size: 512 }
+                    ];
+                    
+                    const output = document.getElementById('output');
+                    output.innerHTML = '';
+                    
+                    sizes.forEach(iconSize => {
+                        const canvas = document.createElement('canvas');
+                        canvas.width = iconSize.size;
+                        canvas.height = iconSize.size;
+                        const ctx = canvas.getContext('2d');
+                        
+                        // Draw white background
+                        ctx.fillStyle = '#ffffff';
+                        ctx.fillRect(0, 0, iconSize.size, iconSize.size);
+                        
+                        // Draw image centered and scaled
+                        const scale = Math.min(iconSize.size / img.width, iconSize.size / img.height) * 0.8;
+                        const x = (iconSize.size - img.width * scale) / 2;
+                        const y = (iconSize.size - img.height * scale) / 2;
+                        
+                        ctx.drawImage(img, x, y, img.width * scale, img.height * scale);
+                        
+                        // Create download link
+                        canvas.toBlob(function(blob) {
+                            const url = URL.createObjectURL(blob);
+                            const a = document.createElement('a');
+                            a.href = url;
+                            a.download = iconSize.name;
+                            a.textContent = `Download ${iconSize.name}`;
+                            a.style.display = 'block';
+                            a.style.margin = '5px 0';
+                            output.appendChild(a);
+                        });
+                    });
+                };
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    </script>
+</body>
+</html>
